@@ -22,7 +22,7 @@ public class BoardServiceImpl implements BoardService{
 		
 	//게시판 리스트	
 	@Override
-	public List<BoardVO> boardList(BoardVO pvo) {
+	public List<BoardVO> boardList(BoardVO pvo) throws Exception{
 			List<BoardVO> myList = new ArrayList<BoardVO>();
 			myList = boardDao.boardList(pvo);
 			
@@ -31,15 +31,15 @@ public class BoardServiceImpl implements BoardService{
 
 	//글쓰기
 	@Override
-	public int boardInsert(BoardVO pvo) {
+	public int boardInsert(BoardVO pvo) throws Exception {
 		int result = 0;
 		result = boardDao.boardInsert(pvo);
-		return 0;
+		return result;
 	}
 
 	//글 조회
 	@Override
-	public BoardVO boardDetail(BoardVO pvo) {
+	public BoardVO boardDetail(BoardVO pvo) throws Exception {
 		BoardVO detail = null;
 		detail = boardDao.boardDetail(pvo);
 		return detail;
@@ -48,9 +48,25 @@ public class BoardServiceImpl implements BoardService{
 	
 	//비밀번호 확인
 	@Override
-	public int pwdConfirm(BoardVO pvo) {
+	public int pwdConfirm(BoardVO pvo) throws Exception {
 		int result = 0;
 		result = boardDao.pwdConfirm(pvo);
+		return result;
+	}
+
+	//글 수정
+	@Override
+	public int boardUpdate(BoardVO pvo) throws Exception {
+			int result = 0;
+			result = boardDao.boardUpdate(pvo);
+		return result;
+	}
+
+	//글 삭제
+	@Override
+	public int boardDelete(int b_num) throws Exception {
+			int result = 0 ;
+			result = boardDao.boardDelete(b_num);
 		return result;
 	}
 
