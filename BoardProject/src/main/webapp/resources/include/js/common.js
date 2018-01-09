@@ -10,3 +10,22 @@ function chkSubmit(v_item, v_name) {
 		return true;
 	}
 }
+
+
+function isNumber(input) {
+	
+	if($(input).val() != ""){
+		var num_regExp = new RegExp("[0-9]$","i"); //only number
+		var match = num_regExp.exec($(input).val());
+		//alert(match);
+		if(match == null){
+			alert("숫자를 입력해주세요");
+			//$(input).val("");
+			$(input).val($(input).val().substr(0, $(input).val().length-1));
+			}
+		}
+	}
+function keyCheck(){	
+	if(event.keyCode < 48 || event.keyCode > 57)
+		event.returnValue=false;
+}

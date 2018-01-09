@@ -35,9 +35,25 @@ public class BoardController {
 		public String boardList(@ModelAttribute BoardVO bvo, Model model) throws Exception{
 			logger.info("게시판 리스트 호출"); //로그 확인
 			
+			//정렬에 대한 기본값 설정
+			if(bvo.getOrder_by() == null) bvo.setOrder_by("b_num");
+			if(bvo.getOrder_sc() == null) bvo.setOrder_sc("DESC");
+			
+			
+			//정렬에 대한 데이터 확인
+			logger.info("order_by = "+bvo.getOrder_by());
+			logger.info("order_sc = "+bvo.getOrder_sc());
+			
+			//검색에 대한 데이터 확인
+			logger.info("search = " +bvo.getSearch());
+			logger.info("keyword = " + bvo.getKeyword());
+			
+			
+			
 			
 			List<BoardVO> boardList = boardService.boardList(bvo);
 			model.addAttribute("boardList",boardList);
+			model.addAttribute("data",bvo);
 			
 			return "board/boardList";
 		}
